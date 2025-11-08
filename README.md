@@ -2,7 +2,7 @@
 Trabalho da disciplina **Programação para Sistemas Paralelos e Distribuídos (PSPD)** – Universidade de Brasília (UnB/FCTE)
 
 **Professor:** Fernando W. Cruz  
-**Aluno(s):** [Seu Nome / Grupo]  
+**Aluno(s):** [Guilherme França Dib de Oliveira Bessa - 190108088]  
 **Data:** [dd/mm/aaaa]
 
 ## 🎯 Objetivo
