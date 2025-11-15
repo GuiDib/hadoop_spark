@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 networks:
   hadoop:
@@ -11,6 +11,7 @@ volumes:
 
 services:
   namenode:
+    platform: linux/amd64
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
     container_name: namenode
     restart: always
@@ -29,6 +30,7 @@ services:
       - hadoop
 
   resourcemanager:
+    platform: linux/amd64
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
     container_name: resourcemanager
     restart: always
@@ -45,6 +47,7 @@ services:
       - hadoop
 
   datanode1:
+    platform: linux/amd64
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
     container_name: datanode1
     restart: always
@@ -58,6 +61,7 @@ services:
       - hadoop
 
   nodemanager1:
+    platform: linux/amd64
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
     container_name: nodemanager1
     restart: always
@@ -74,6 +78,7 @@ services:
       - hadoop
 
   datanode2:
+    platform: linux/amd64
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
     container_name: datanode2
     restart: always
@@ -87,6 +92,7 @@ services:
       - hadoop
 
   nodemanager2:
+    platform: linux/amd64
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
     container_name: nodemanager2
     restart: always

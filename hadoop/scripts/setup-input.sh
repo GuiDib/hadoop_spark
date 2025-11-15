@@ -1,4 +1,4 @@
-#!/bin/bash
+docker-compose up -d --platform linux/amd64#!/bin/bash
 set -e
 
 echo '📂 Criando diretório de entrada e arquivos grandes para teste...'
@@ -6,16 +6,28 @@ echo '📂 Criando diretório de entrada e arquivos grandes para teste...'
 # 1. Criar pasta input se não existir
 mkdir -p input
 
+
 # 2. Gerar arquivo de texto ENORME (2048 MB) para teste de performance
 # (2048 * 1024 * 1024 bytes) = ~2 GB
 FILE_SIZE_BYTES=$((2048 * 1024 * 1024))
 OUTPUT_FILE="input/large_input.txt"
 
-if [ ! -f "$OUTPUT_FILE" ] || [ $(stat -c%s "$OUTPUT_FILE") -lt $FILE_SIZE_BYTES ]; then
+# Detecta sistema operacional para usar o comando stat correto
+if [[ "$(uname)" == "Darwin" ]]; then
+    STAT_CMD="stat -f%z"
+else
+    STAT_CMD="stat -c%s"
+fi
+
+FILE_SIZE=0
+if [ -f "$OUTPUT_FILE" ]; then
+    FILE_SIZE=$($STAT_CMD "$OUTPUT_FILE")
+fi
+
+if [ ! -f "$OUTPUT_FILE" ] || [ "$FILE_SIZE" -lt "$FILE_SIZE_BYTES" ]; then
     echo "Gerando arquivo ENORME ($FILE_SIZE_BYTES bytes). Isso vai demorar..."
-    # Usando dd para garantir o tamanho (mais rápido que base64 para este volume)
-    # Mas vamos manter o base64 para garantir que seja TEXTO, não binário
-    base64 /dev/urandom | head -c $FILE_SIZE_BYTES > "$OUTPUT_FILE"
+    # Gera 2GB de dados aleatórios e converte para texto base64
+    dd if=/dev/urandom bs=1m count=2048 2>/dev/null | base64 > "$OUTPUT_FILE"
     echo "✅ Arquivo $OUTPUT_FILE criado com sucesso!"
 else
     echo "✅ Arquivo $OUTPUT_FILE já existe e tem o tamanho correto."
