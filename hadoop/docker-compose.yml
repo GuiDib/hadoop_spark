@@ -1,16 +1,46 @@
-version: '3'
+version: '3.8'
+
+networks:
+  hadoop:
+    driver: bridge
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode1:
+  hadoop_datanode2:
+
 services:
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
     container_name: namenode
     restart: always
-    environment:
-      - CLUSTER_NAME=test-cluster
     ports:
       - "9870:9870"
       - "9000:9000"
+    environment:
+      - CLUSTER_NAME=test-cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager 
     volumes:
-      - ./data:/hadoop/dfs
+      - hadoop_namenode:/hadoop/dfs/name
+      - ./input:/input 
+      - ./config/mapred-site.xml:/etc/hadoop/mapred-site.xml 
+    networks:
+      - hadoop
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    container_name: resourcemanager
+    restart: always
+    ports:
+      - "8088:8088"
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    volumes:
+      - ./config/mapred-site.xml:/etc/hadoop/mapred-site.xml 
+      - ./config/yarn-site.xml:/etc/hadoop/yarn-site.xml
+    depends_on:
+      - namenode
     networks:
       - hadoop
 
@@ -20,8 +50,26 @@ services:
     restart: always
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    depends_on:
+      - namenode
     volumes:
-      - ./data:/hadoop/dfs
+      - hadoop_datanode1:/hadoop/dfs/data
+    networks:
+      - hadoop
+
+  nodemanager1:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    container_name: nodemanager1
+    restart: always
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - YARN_CONF_yarn_nodemanager_hostname=nodemanager1 
+    volumes:
+      - ./config/mapred-site.xml:/etc/hadoop/mapred-site.xml
+      - ./config/yarn-site.xml:/etc/hadoop/yarn-site.xml
+    depends_on:
+      - namenode
+      - resourcemanager
     networks:
       - hadoop
 
@@ -31,11 +79,25 @@ services:
     restart: always
     environment:
       - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    depends_on:
+      - namenode
     volumes:
-      - ./data:/hadoop/dfs
+      - hadoop_datanode2:/hadoop/dfs/data
     networks:
       - hadoop
 
-networks:
-  hadoop:
-    driver: bridge
+  nodemanager2:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    container_name: nodemanager2
+    restart: always
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - YARN_CONF_yarn_nodemanager_hostname=nodemanager2 
+    volumes:
+      - ./config/mapred-site.xml:/etc/hadoop/mapred-site.xml 
+      - ./config/yarn-site.xml:/etc/hadoop/yarn-site.xml
+    depends_on:
+      - namenode
+      - resourcemanager
+    networks:
+      - hadoop

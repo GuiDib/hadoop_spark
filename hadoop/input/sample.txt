@@ -1,0 +1,5 @@
+hadoop hdfs mapreduce hadoop yarn
+spark hadoop hdfs spark
+hadoop yarn mapreduce yarn hadoop
+datanode namenode hadoop hadoop
+container yarn resourcemanager container
