@@ -63,7 +63,7 @@ Durante a execução do WordCount, foram simuladas falhas controladas (parada e 
 
 ### Opinião dos Alunos
 
-1. **Bruno Henrique Cardoso:**
+1. **Bruno Henrique Cardoso:** Trabalhei na implementação do Apache Spark e na integração com Kafka para streaming de dados. A configuração inicial do Spark foi desafiadora, especialmente ao ajustar os parâmetros de memória e executores para otimizar o desempenho. O Kafka mostrou-se eficiente para o processamento de streams em tempo real, mas exigiu atenção especial na configuração de tópicos e partições. Apesar das dificuldades iniciais, consegui observar na prática as vantagens do processamento distribuído.
 2. **Guilherme Dib França:**
 3. **João Gabriel Elvas:**
 Participei ativamente da implementação e configuração da parte do Hadoop no projeto. Aprendi bastante sobre o processamento de dados distribuídos e como o ecossistema funciona. Achei a etapa que envolvia o Google Colab um pouco complicada, pois ele falhava com frequência e apresentava instabilidades. Por conta disso, preferimos seguir utilizando o Docker, que nos proporcionou um ambiente mais estável e controlado para o desenvolvimento.
