@@ -89,10 +89,8 @@ Scripts e comandos utilizados estão detalhados no notebook `SPARK_FINAL.ipynb`.
 
 ---
 
-## 4. Apêndice/Anexo (Opcional)
+## 4. Apêndice/Anexo 
 
-- Arquivos de configuração: `docker-compose.yml`, scripts de inicialização e execução.
-- Comentários sobre os códigos construídos e instruções detalhadas de execução estão disponíveis nos READMEs das pastas.
 - Links úteis:
   - [Apache Hadoop](https://hadoop.apache.org/docs/stable/)
   - [Apache Spark](https://spark.apache.org/docs/latest/)
