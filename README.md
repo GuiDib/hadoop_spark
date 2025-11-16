@@ -63,10 +63,11 @@ Durante a execução do WordCount, foram simuladas falhas controladas (parada e 
 
 ### Opinião dos Alunos
 
-**Bruno Henrique Cardoso:**
-**Guilherme Dib França:**
-**João Gabriel Elvas:**
-**Pedro Henrique Nogueira:**
+1. **Bruno Henrique Cardoso:**
+2. **Guilherme Dib França:**
+3. **João Gabriel Elvas:**
+Participei ativamente da implementação e configuração da parte do Hadoop no projeto. Aprendi bastante sobre o processamento de dados distribuídos e como o ecossistema funciona. Achei a etapa que envolvia o Google Colab um pouco complicada, pois ele falhava com frequência e apresentava instabilidades. Por conta disso, preferimos seguir utilizando o Docker, que nos proporcionou um ambiente mais estável e controlado para o desenvolvimento.
+4. **Pedro Henrique Nogueira:**
 
 ---
 
