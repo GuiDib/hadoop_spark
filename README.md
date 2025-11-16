@@ -53,13 +53,12 @@ Durante a execução do WordCount, foram simuladas falhas controladas (parada e 
 
 ### Arquitetura e Configuração
 
-O ambiente Spark foi configurado em modo cluster, utilizando contêineres Docker e também experimentos em Google Colab. Foram integrados serviços como Kafka e ElasticSearch/Kibana para processamento e visualização de dados em tempo real. As principais etapas do experimento incluíram:
+O ambiente Spark foi configurado em modo cluster, dentro do Google Colab. Foram integrados serviços como Kafka para processamento e visualização de dados em tempo real. As principais etapas do experimento incluíram:
 
 - Instalação do Spark e configuração das variáveis de ambiente.
 - Integração do Spark Streaming com Kafka para ingestão de dados.
 - Utilização do dataset IMDb via Hugging Face para simular um fluxo de dados real.
 - Processamento de dados em tempo real com Spark Structured Streaming, contabilizando palavras recebidas do Kafka.
-- Envio dos resultados para ElasticSearch e visualização via Kibana.
 
 Scripts e comandos utilizados estão detalhados no notebook `SPARK_FINAL.ipynb`.
 
