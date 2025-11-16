@@ -95,3 +95,4 @@ Scripts e comandos utilizados estão detalhados no notebook `SPARK_FINAL.ipynb`.
   - [Apache Hadoop](https://hadoop.apache.org/docs/stable/)
   - [Apache Spark](https://spark.apache.org/docs/latest/)
   - https://drive.google.com/drive/u/0/folders/11ecqTr4Rk5-6AfzD9JFOlbGWdz3AFTXL
+  - [Video Apresentação](https://youtu.be/cvTfGo5oqww)
