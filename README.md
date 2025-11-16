@@ -91,6 +91,7 @@ Scripts e comandos utilizados estão detalhados no notebook `SPARK_FINAL.ipynb`.
 
 ## 4. Apêndice/Anexo 
 
-- Links úteis:
+- Links úteis
   - [Apache Hadoop](https://hadoop.apache.org/docs/stable/)
   - [Apache Spark](https://spark.apache.org/docs/latest/)
+  - https://drive.google.com/drive/u/0/folders/11ecqTr4Rk5-6AfzD9JFOlbGWdz3AFTXL
